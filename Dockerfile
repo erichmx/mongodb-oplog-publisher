@@ -9,8 +9,8 @@ ENV MOP_BUS_CHANNEL objects
 RUN set -e; \
     apt-get update; \
     apt-get install -y build-essential curl; \
-    curl -sL https://deb.nodesource.com/setup | bash -; \
-    apt-get install -y nodejs;
+    curl -sL https://deb.nodesource.com/setup_6.x | bash -; \
+    apt-get install -y nodejs; \
     apt-get clean; \
     rm -rf /var/lib/apt/lists/*
 
