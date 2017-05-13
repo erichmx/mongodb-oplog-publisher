@@ -38,6 +38,7 @@ watch 'delete'
 
 stopping = false
 oplog.on 'error', (err) ->
+    logger.info 'Watch received ERROR event'
     logger.error err
     stop(1) unless stopping
 oplog.on 'end', ->
@@ -59,6 +60,6 @@ handleSignal = (signal) ->
     stop()
 process.on 'SIGINT', handleSignal.bind null, 'SIGINT'
 process.on 'SIGTERM', handleSignal.bind null, 'SIGTERM'
-#process.stdout.on 'error', -> stop 1
+process.stdout.on 'error', -> stop 1
 
 setImmediate -> oplog.tail -> logger.info 'Tailing oplog'
