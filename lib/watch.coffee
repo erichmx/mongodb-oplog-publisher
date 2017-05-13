@@ -43,10 +43,10 @@ oplog.on 'error', (err) ->
     else
       logger.info 'Watch received ERROR event'
       logger.error err
-      stop(1) unless stopping
+      stop(2) unless stopping
 oplog.on 'end', ->
     logger.info 'Watch received end event'
-    stop(1) unless stopping
+    stop(3) unless stopping
 
 stop = (code = 0) ->
     exiting = true
@@ -55,7 +55,7 @@ stop = (code = 0) ->
         (cb) -> oplog.stop cb
     ], (err) ->
         logger.error err if err?
-        setImmediate -> process.exit if err? then 1 else code
+        setImmediate -> process.exit if err? then 4 else code
 
 
 handleSignal = (signal) ->
@@ -63,6 +63,6 @@ handleSignal = (signal) ->
     stop()
 process.on 'SIGINT', handleSignal.bind null, 'SIGINT'
 process.on 'SIGTERM', handleSignal.bind null, 'SIGTERM'
-#process.stdout.on 'error', -> stop 1
+process.stdout.on 'error', -> stop 5
 
 setImmediate -> oplog.tail -> logger.info 'Tailing oplog'
