@@ -32,6 +32,7 @@ watch = (op) ->
         return unless ns and _id and action
         topic = "#{ns}.#{action}"
         payload = if op is 'create' then doc.o else {_id: _id}
+        logger.debug "Publishing ", op, topic, payload
         publisher.publish topic, payload
 
 watch 'insert'
