@@ -38,9 +38,12 @@ watch 'delete'
 
 stopping = false
 oplog.on 'error', (err) ->
-    logger.info 'Watch received ERROR event'
-    logger.error err
-    stop(1) unless stopping
+    if err.name == "MongoError" and err.message == "No more documents in tailed cursor"
+      logger.info 'Watch received no more documents in tailed cursor event'
+    else
+      logger.info 'Watch received ERROR event'
+      logger.error err
+      stop(1) unless stopping
 oplog.on 'end', ->
     logger.info 'Watch received end event'
     stop(1) unless stopping
