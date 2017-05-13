@@ -24,7 +24,7 @@ opMap = {insert: 'create', update: 'update', delete: 'delete'}
 watch = (op) ->
     logger.debug 'Watching %s on all namespaces', op
     oplog.on op, (doc) ->
-        logger.debug "Received #{doc}", op
+        logger.debug "Received ", doc, op
         console.log doc
         _id = if op in ['update'] then doc.o2?._id else doc.o?._id
         ns = doc.ns
