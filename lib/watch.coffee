@@ -25,10 +25,10 @@ watch = (op) ->
     logger.debug 'Watching %s on all namespaces', op
     oplog.on op, (doc) ->
         logger.debug "Received ", doc, op
-        console.log doc
         _id = if op in ['update'] then doc.o2?._id else doc.o?._id
         ns = doc.ns
         action = opMap[op]
+        logger.debug ns, _id, action
         return unless ns and _id and action
         topic = "#{ns}.#{action}"
         payload = if op is 'create' then doc.o else {_id: _id}
