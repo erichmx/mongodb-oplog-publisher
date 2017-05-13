@@ -11,7 +11,7 @@ RUN set -e; \
     rm -rf /var/lib/apt/lists/*
 
     RUN npm install -g forever
-ENV REFRESHED 20170513 114914
+ENV REFRESHED 20170513 114918
     RUN npm install -g erichmx/mongodb-oplog-publisher
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
