@@ -27,4 +27,4 @@ while read i; do file_env $i; done < <(env | grep _FILE= | sed -n 's/\(.*\)_FILE
 # SECURITY HOLE PRINTING ENV AFTER LOADING SECRETS, DON'T DO IT!! printenv
 
 mongo --version
-forever --minUptime 1000 --spinSleepTime 1000 /usr/bin/mop
+forever --minUptime 1000 --spinSleepTime 1000 /usr/local/bin/mop
