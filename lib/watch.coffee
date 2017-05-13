@@ -1,4 +1,4 @@
-antz = require 'antz'
+#antz = require 'antz'
 async = require 'async'
 #logger = require('twelve').logger 'mop', 'watch'
 MongoOplog = require 'mongo-oplog'
@@ -10,14 +10,14 @@ busChannel = config.get('mop:bus:channel') or 'objects'
 
 oplog = MongoOplog dbURL
 
-publisher = antz.publisher busURL, busChannel
-publisher.on 'close', ->
-    console.log 'Publisher closed. Stopping'
-    oplog.stop()
-publisher.on 'error', (err) ->
-    console.log 'Error received'
-    console.log err
-    oplog.stop()
+#publisher = antz.publisher busURL, busChannel
+#publisher.on 'close', ->
+#    console.log 'Publisher closed. Stopping'
+#    oplog.stop()
+#publisher.on 'error', (err) ->
+#    console.log 'Error received'
+#    console.log err
+#    oplog.stop()
 
 opMap = {insert: 'create', update: 'update', delete: 'delete'}
 
@@ -30,7 +30,8 @@ watch = (op) ->
         return unless ns and _id and action
         topic = "#{ns}.#{action}"
         payload = if op is 'create' then doc.o else {_id: _id}
-        publisher.publish topic, payload
+        console.log topic
+#        publisher.publish topic, payload
 
 watch 'insert'
 watch 'update'

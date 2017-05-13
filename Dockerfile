@@ -11,7 +11,7 @@ RUN set -e; \
     rm -rf /var/lib/apt/lists/*
 
     RUN npm install -g forever
-    RUN npm install -g bson-ext mongodb-oplog
+    RUN npm install -g bson-ext mongo-oplog
 ENV REFRESHED 20170513 114915
     RUN npm install -g erichmx/mongodb-oplog-publisher
 
