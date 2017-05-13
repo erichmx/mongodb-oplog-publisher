@@ -4,9 +4,13 @@ async = require 'async'
 MongoOplog = require 'mongo-oplog'
 config = require '../config'
 
-dbURL = config.get 'mop:db:url'
-busURL = config.get 'mop:bus:url'
-busChannel = config.get('mop:bus:channel') or 'objects'
+#dbURL = config.get 'mop:db:url'
+#busURL = config.get 'mop:bus:url'
+#busChannel = config.get('mop:bus:channel') or 'objects'
+
+dbURL = process.env.MOP_DB_URL
+busURL = process.env.MOP_BUS_URL
+busChannel = process.env.MOP_BUS_CHANNEL or 'objects'
 
 oplog = MongoOplog dbURL
 
