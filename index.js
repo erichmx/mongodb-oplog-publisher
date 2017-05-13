@@ -4,7 +4,7 @@
 // require('./lib/watch');
 
 
-import MongoOplog from 'mongo-oplog'
+MongoOplog =require('mongo-oplog')
 const oplog = MongoOplog(process.env.MOP_DB_URL)
 
 oplog.tail();
