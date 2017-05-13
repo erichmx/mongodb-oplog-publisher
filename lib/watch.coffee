@@ -39,7 +39,7 @@ watch 'delete'
 stopping = false
 oplog.on 'error', (err) ->
     if err.name == "MongoError" and err.message == "No more documents in tailed cursor"
-      logger.info 'Watch received no more documents in tailed cursor event'
+      logger.trace 'Watch received no more documents in tailed cursor event'
     else
       logger.info 'Watch received ERROR event'
       logger.error err
