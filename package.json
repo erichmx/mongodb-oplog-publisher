@@ -11,7 +11,8 @@
     "coffee-script": "^1.8.0",
     //"twelve": "^0.0.19",
     "mongo-oplog": "^2.0.2",
-//    "antz": "^0.0.1" },
+//    "antz": "^0.0.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
