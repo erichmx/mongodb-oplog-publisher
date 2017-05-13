@@ -9,7 +9,7 @@
   "dependencies": {
     "async": "^0.9.0",
     "coffee-script": "^1.8.0",
-    //"twelve": "^0.0.19",
+    "twelve": "^0.0.19",
     "mongo-oplog": "^2.0.2",
     "antz": "^0.0.1"
   },
