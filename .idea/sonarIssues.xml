@@ -13,31 +13,6 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/config.coffee">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/docker-entrypoint.sh">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/index.js">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/lib/watch.coffee">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/package.json">
-          <value>
-            <set />
-          </value>
-        </entry>
       </map>
     </option>
   </component>

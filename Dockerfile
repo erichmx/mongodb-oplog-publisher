@@ -11,8 +11,7 @@ RUN set -e; \
     rm -rf /var/lib/apt/lists/*
 
     RUN npm install -g forever
-    RUN npm install -g bson-ext mongo-oplog
-ENV REFRESHED 20170513 112020
+ENV REFRESHED 20170513 114914
     RUN npm install -g erichmx/mongodb-oplog-publisher
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
