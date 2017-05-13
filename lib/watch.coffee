@@ -63,6 +63,6 @@ handleSignal = (signal) ->
     stop()
 process.on 'SIGINT', handleSignal.bind null, 'SIGINT'
 process.on 'SIGTERM', handleSignal.bind null, 'SIGTERM'
-process.stdout.on 'error', -> stop 1
+#process.stdout.on 'error', -> stop 1
 
 setImmediate -> oplog.tail -> logger.info 'Tailing oplog'
