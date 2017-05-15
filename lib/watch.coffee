@@ -30,7 +30,14 @@ watch = (op) ->
         action = opMap[op]
         return unless ns and _id and action
         topic = "#{ns}.#{action}"
-        payload = if op is 'create' then doc.o else {_id: _id}
+        #payload = if op is 'create' then doc.o else {_id: _id}
+        payload = {
+          ns: ns,
+          op: op,
+          _id: if op is 'create' then doc.o else {_id: _id},
+          o: doc.o,
+          doc: doc
+        }
         publisher.publish topic, payload
 
 watch 'insert'
