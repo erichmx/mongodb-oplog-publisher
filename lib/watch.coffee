@@ -34,9 +34,7 @@ watch = (op) ->
         payload = {
           ns: ns,
           op: op,
-          _id: if op is 'create' then doc.o else {_id: _id},
-          o: doc.o,
-          doc: doc
+          _id: if op is 'create' then doc.o else {_id: _id}
         }
         publisher.publish topic, payload
 
