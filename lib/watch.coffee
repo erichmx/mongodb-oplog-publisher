@@ -29,7 +29,7 @@ watch = (op) ->
         ns = doc.ns
         action = opMap[op]
         fields = null
-        if(op == 'update' && doc.o && doc.o['$set'])
+        if(op == 'update' and doc.o and doc.o['$set'])
           fields = (key for key in doc.o['$set'])
         logger.debug fields
         return unless ns and _id and action
