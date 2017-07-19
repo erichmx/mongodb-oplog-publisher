@@ -24,17 +24,23 @@ opMap = {insert: 'create', update: 'update', delete: 'delete'}
 watch = (op) ->
     logger.debug 'Watching %s on all namespaces', op
     oplog.on op, (doc) ->
-        logger.debug "Received ", doc, op
+        logger.debug "Received2 ", doc, op
         _id = if op in ['update'] then doc.o2?._id else doc.o?._id
         ns = doc.ns
         action = opMap[op]
+        fields = null
+        logger.debug op == 'update' && doc.o && doc.o['$set']
+        if(op == 'update' && doc.o && doc.o['$set']) then
+          fields = (key for key in doc.o['$set'])
+        logger.debug fields
         return unless ns and _id and action
         topic = "#{ns}.#{action}"
         #payload = if op is 'create' then doc.o else {_id: _id}
         payload = {
           ns: ns,
           op: op,
-          _id: _id
+          _id: _id,
+          fields: fields
         }
         publisher.publish topic, payload
 
