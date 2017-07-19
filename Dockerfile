@@ -11,7 +11,7 @@ RUN set -e; \
     rm -rf /var/lib/apt/lists/*
 
     RUN npm install -g bson-ext forever mongo-oplog async coffee-script twelve antz
-ENV REFRESHED 20170719 112823
+ENV REFRESHED 20170719 112923
     RUN npm install -g erichmx/mongodb-oplog-publisher
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
