@@ -24,7 +24,7 @@ opMap = {insert: 'create', update: 'update', delete: 'delete'}
 watch = (op) ->
     logger.debug 'Watching %s on all namespaces', op
     oplog.on op, (doc) ->
-        logger.debug "Received2 ", doc, op
+        logger.debug "OpLog Received ", doc, op
         _id = if op in ['update'] then doc.o2?._id else doc.o?._id
         ns = doc.ns
         action = opMap[op]
@@ -40,6 +40,7 @@ watch = (op) ->
           _id: _id,
           fields: fields
         }
+        logger.debug "OpLog Sending ", payload
         publisher.publish topic, payload
 
 watch 'insert'
