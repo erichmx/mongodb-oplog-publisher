@@ -29,9 +29,8 @@ watch = (op) ->
         ns = doc.ns
         action = opMap[op]
         fields = null
-        if(op == 'update' and doc.o and doc.o['$set'])
+        if(`op == 'update' && doc.o && doc.o['$set']`)
           fields = (key for key in doc.o['$set'])
-        logger.debug fields
         return unless ns and _id and action
         topic = "#{ns}.#{action}"
         #payload = if op is 'create' then doc.o else {_id: _id}
